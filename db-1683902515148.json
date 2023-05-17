@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "patients": [
+    {
+      "prenom": "Bineta",
+      "nom": "Dieng",
+      "dateNaiss": "2023-05-22",
+      "groupeSanguin": "0+",
+      "email": "binetad048@gmail.com",
+      "numero": "4455433",
+      "adresse": "Thiaroye gare Hamdalaye 1",
+      "sexe": "female",
+      "profession": "dev",
+      "id": 3
+    },
+    {
+      "prenom": "Bineta",
+      "nom": "Dieng",
+      "dateNaiss": "2023-05-22",
+      "groupeSanguin": "0+",
+      "email": "binetad048@gmail.com",
+      "numero": "4455433",
+      "adresse": "Thiaroye gare Hamdalaye 1",
+      "sexe": "female",
+      "profession": "dev",
+      "id": 4
+    },
+    {
+      "prenom": "Astou",
+      "nom": "Dieng",
+      "dateNaiss": "2023-05-16T00:00:00.000Z",
+      "groupeSanguin": "B-",
+      "email": "astou@gmail.com",
+      "numero": "774568798",
+      "adresse": "pikine",
+      "sexe": "female",
+      "profession": "dev",
+      "id": 5
+    },
+    {
+      "prenom": "Alasssane",
+      "nom": "Dieng",
+      "dateNaiss": "2023-05-02T00:00:00.000Z",
+      "groupeSanguin": "B-",
+      "email": "alo34@gmail.com",
+      "numero": "776545434",
+      "adresse": "pikine",
+      "sexe": "female",
+      "profession": "dev",
+      "id": 6
+    }
+  ]
+}

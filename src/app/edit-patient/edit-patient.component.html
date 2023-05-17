@@ -1,0 +1,96 @@
+  
+  <ng-template #edit>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">modifier patient </h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="patient.nom"  required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control" name="prenom" id="prenom" [(ngModel)]="patient.prenom"  required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="dateNaissance">Date de naissance :</label>
+                <input type="date" class="form-control" id="dateNaissance" [(ngModel)]="patient.dateNaiss" name="dateNaiss"  required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="groupeSanguin">Groupe sanguin :</label>
+                <select class="form-control" id="groupeSanguin" name="groupeSanguin" [(ngModel)]="patient.groupeSanguin" >
+                  <option  [ngValue]="'A'" >A</option>
+                  <option  [ngValue]="'B'">B</option>
+                  <option [ngValue]="'AB'">AB</option>
+                  <option  [ngValue]="'O'">O</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="sexe">Sexe :</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sexe" [(ngModel)]="patient.sexe"  id="homme" value="H"  required>
+                  <label class="form-check-label" for="homme">Homme</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sexe" [(ngModel)]="patient.sexe" id="femme" value="F"  required>
+                  <label class="form-check-label" for="femme">Femme</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="profession">Profession :</label>
+                <input type="text" class="form-control" [(ngModel)]="patient.profession" name="profession" id="profession" >
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="adresse">Adresse :</label>
+            <input class="form-control" type="text" id="adresse" [(ngModel)]="patient.adresse" name="adresse"  >
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" name="email" [(ngModel)]="patient.email" class="form-control" id="email" >
+              </div>
+            </div>
+    
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="numero">Numero :</label>
+                <input type="numero" class="form-control" id="numero" name="numero" [(ngModel)]="patient.numero" >
+              </div>
+            </div>
+      </div>
+    <div class="col-md-6 mt-4">
+    <button class="btn btn-primary" type="button" (click)="updatePatient()">Ajouter</button>
+    </div>
+    
+      </form>
+    </div>
+     
+  </ng-template>
+  

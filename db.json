@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "patients": [
+    {
+      "nom": "Dieng",
+      "prenom": "Bineta",
+      "adresse": "Thiaroye gare Hamdalaye 1",
+      "dateNaiss": "2023-05-11",
+      "groupeSanguin": "B",
+      "profession": "développeur",
+      "numero": "3211",
+      "email": "binetad048@gmail.com",
+      "sexe": "F",
+      "id": 10
+    }
+  ]
+}

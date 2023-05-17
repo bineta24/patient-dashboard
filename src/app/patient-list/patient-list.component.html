@@ -1,0 +1,488 @@
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Brand</a>
+  
+        <!-- Icons -->
+        <ul class="navbar-nav d-flex flex-row me-1">
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link " href="#"><i class="fas fa-envelope mx-1"></i> Contact</a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link " href="#"><i class="fas fa-cog mx-1"></i> Settings</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                data-mdb-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user mx-1"></i> Profile </a>
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#">My account</a>
+                    </li>
+  
+                    <li>
+                        <a class="dropdown-item " href="#">Log out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  
+    <!-- Container wrapper -->
+  </nav>
+  
+  <div class="container mt-5 ">
+    <div class="row">
+      <div class="col-md-1">
+        <div class="sidebar bg-white ">
+          <a  href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+          <a  href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
+          <a  href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
+          <a  href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+      <div class="col-md-11 col-11 col-lg-11 ">
+     <div class="row">
+     
+     
+  
+      <div class="d-flex  justify-content-between align-items-center">
+        <div class="col-sm-6">
+          <h1>Patients</h1>
+          <p>Voir tous les informations du patient</p>
+  
+          <ul class="nav nav-tabs"  id="myTab0" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Patient</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nouveaux Patient</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rendez-vouz</a>
+            </li>
+           
+          </ul>
+         
+        </div>
+        <div class="text-end">
+          <button class="btn btn-secondary me-2" > <i class='fas fa-file-export grey-color'></i>Exporter</button>
+           <button class="btn btn-primary " (click)="openAddModal(template)">Nouveau Patient</button> 
+  
+         
+        
+        
+      
+        </div>
+      </div>
+  
+     </div>
+       
+        <div class="tab-content mt-4" id="myTabContent0">
+          <div
+            class="tab-pane fade show active"
+            id="home0"
+            role="tabpanel"
+            aria-labelledby="home-tab0"
+          >
+  
+     
+  
+  
+          <div class="d-flex justify-content-between">
+            <div>
+              <div class="form-group has-search  mb-4">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchText">
+              </div>
+            </div>
+            <div class="d-flex">
+              <form class="me-2" >
+          
+            
+                <div class="input-group date" id="datepicker">
+                 
+                  <span class="input-group-append">
+                    <span class="input-group-text bg-light d-block">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </span>
+  
+                  <input type="text" class="form-control" id="date" placeholder="january 2/2023"/>
+                </div>
+              
+            </form>
+
+            <form class="me-2" >
+          
+            
+                <div class="input-group date" id="datepicker">
+                 
+                  <span class="input-group-append">
+                    <span class="input-group-text bg-light d-block">
+                      <i class="fa fa-filter"></i>
+                    </span>
+                  </span>
+  
+                  <input type="text" style="width: 100px;" class="form-control" id="date" placeholder="Filter"/>
+                </div>
+              
+            </form>
+           
+  
+            </div>
+           
+          </div>
+          
+  
+  
+          <div class="table-responsive table-card mb-0">
+            <table class="table">
+              <thead>
+                <tr>
+                <th ><input class="form-check-input" type="checkbox"></th>
+                <th >Patient</th>
+                
+                <th >Date de Naissance</th>
+                <th >Groupe Sanguin</th>
+                <th >Email</th>
+                <th >Numero</th>
+                <th>Profession</th>
+                <th>Sexe</th>
+               
+             
+                
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                
+                  <tr *ngFor="let p of patients  
+                  | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+                    let i = index 
+                    " >
+                  
+                   
+                        <!-- | filter:searchText -->
+                        <!-- let p of patients  
+                  | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+                    let i = index 
+                    " -->
+
+               
+                    <td class="check" ><input type="checkbox" class="form-check-input "></td>
+                    <td > <img class="rounded-circle me-2" src="https://i.imgur.com/C4egmYM.jpg" width="30"> {{p.prenom}} {{p.nom}}</td>
+                    <td class="col-sm-1">{{p.dateNaiss | date: 'dd/MM/yyyy'}}</td>
+                    <td class="text-center col-sm-1 ">{{p.groupeSanguin}}</td>
+                    <td  >{{p.email}}</td>
+                    <td >{{p.numero}}</td>
+                    <td >{{p.profession}}</td>
+                    <td >{{p.sexe}}</td>
+
+                  <td class="col" >
+                    <a  routerLink="/patient/{{ p.id }}">
+                      <i class="fa fa-eye text-primary"></i> 
+                    </a>
+                    
+                    <a  (click)="openModal(edit,p.id)">
+                      <i class="fa fa-pencil me-1 ms-1 text-warning " ></i> 
+                    </a>
+
+                    <a (click)="deletePatient(p.id)" >
+                      <i class="fa fa-trash text-danger"></i> 
+                    </a>
+                  </td>
+                </tr>
+                <!-- Ajoutez d'autres lignes ici -->
+              </tbody>
+            </table>
+           
+            
+          </div>
+          <div class="d-flex flex-row-reverse " >
+            <pagination-controls class="custom-container"
+              previousLabel="Précédent"
+              nextLabel="Suivant"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        
+
+          
+         
+      
+     
+    
+  
+         
+            
+          </div>
+          <div class="tab-pane fade" id="profile0" role="tabpanel" aria-labelledby="profile-tab0">
+            Tab 2 content
+          </div>
+          <div class="tab-pane fade" id="contact0" role="tabpanel" aria-labelledby="contact-tab0">
+            Tab 3 content
+          </div>
+        </div>
+        
+  
+        
+  
+         
+        
+  
+         
+  
+          
+          
+    
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-5 p-4 bg-dark text-white text-center">
+    <p>Footer</p>
+  </div>
+  
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Ajouter patient </h4>
+      
+    </div>
+    <div class="modal-body">
+      <form  >
+        <div class="row">
+          <div class="mb-2 col-md-6">
+            <div class="form-group">
+              <label for="nom">Nom :</label>
+              <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="patient.nom"  required>
+            </div>
+          </div>
+          <div class="mb-2 col-md-6">
+            <div class="form-group">
+              <label for="prenom">Prénom :</label>
+              <input type="text" class="form-control" name="prenom" id="prenom" [(ngModel)]="patient.prenom"  required>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="mb-4 col-md-6">
+            <div class="form-group">
+              <label for="dateNaissance">Date de naissance :</label>
+              <input type="date" class="form-control" id="dateNaissance" [(ngModel)]="patient.dateNaiss" name="dateNaiss"  required>
+            </div>
+          </div>
+          <div class="mb-2 col-md-6">
+            <div class="form-group">
+              <label for="groupeSanguin">Groupe sanguin :</label>
+              <select class="form-control" id="groupeSanguin" name="groupeSanguin" [(ngModel)]="patient.groupeSanguin" >
+                <option  [ngValue]="'A'" >A</option>
+                <option  [ngValue]="'B'">B</option>
+                <option [ngValue]="'AB'">AB</option>
+                <option  [ngValue]="'O'">O</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+        
+          <div class="form-group mb-2 col-md-6">
+            <label for="adresse">Adresse :</label>
+            <input class="form-control" type="text" id="adresse" [(ngModel)]="patient.adresse" name="adresse"  >
+          </div>
+          <div class="mb-2 col-md-6">
+            <div class="form-group">
+              <label for="profession">Profession :</label>
+              <input type="text" class="form-control" [(ngModel)]="patient.profession" name="profession" id="profession" >
+            </div>
+          </div>
+        </div>
+        
+       
+        
+        <div class="row">
+          <div class="mb-4 col-md-6">
+            <div class="form-group">
+              <label for="email">Email :</label>
+              <input type="email" name="email" [(ngModel)]="patient.email" class="form-control" id="email" >
+            </div>
+          </div>
+  
+          <div class="mb-2 col-md-6">
+            <div class="form-group">
+              <label for="numero">Numero :</label>
+              <input type="numero" class="form-control" id="numero" name="numero" [(ngModel)]="patient.numero" >
+            </div>
+          </div>
+          <div class="mb-2 col">
+            <div class="form-group">
+              <label for="sexe" class="me-2">Sexe :</label>
+              
+                <input class="form-check-input me-2" type="radio" name="sexe" [(ngModel)]="patient.sexe"  id="homme" value="H"  required>
+                <label class="form-check-label me-4" for="homme">Homme</label>
+             
+              
+                <input class="form-check-input me-2" type="radio" name="sexe" [(ngModel)]="patient.sexe" id="femme" value="F"  required>
+                <label class="form-check-label" for="femme">Femme</label>
+            
+            </div>
+          </div>
+
+          
+    </div>
+  <div class=" mt-4 text-center">
+  
+  <button class="btn btn-danger me-4" type="button"   aria-label="Close" (click)="modalRef.hide()">Fermer</button>
+  <button class="btn btn-primary " type="button" (click)="addPatient()">Ajouter</button>
+  </div>
+  
+    </form>
+  
+  </div>
+   
+  </ng-template>
+
+
+
+    
+  <ng-template #edit>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">modifier patient </h4>
+     
+          
+      </div>
+      <div class="modal-body">
+        <form  >
+          <div class="row">
+            <div class="mb-2 col-md-6">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="patient.nom"  required>
+              </div>
+            </div>
+            <div class="mb-2 col-md-6">
+              <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control" name="prenom" id="prenom" [(ngModel)]="patient.prenom"  required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="mb-4 col-md-6">
+              <div class="form-group">
+                <label for="dateNaissance">Date de naissance :</label>
+                <input type="date" class="form-control" id="dateNaissance" [(ngModel)]="patient.dateNaiss" name="dateNaiss"  required>
+              </div>
+            </div>
+            <div class="mb-2 col-md-6">
+              <div class="form-group">
+                <label for="groupeSanguin">Groupe sanguin :</label>
+                <select class="form-control" id="groupeSanguin" name="groupeSanguin" [(ngModel)]="patient.groupeSanguin" >
+                  <option  [ngValue]="'A'" >A</option>
+                  <option  [ngValue]="'B'">B</option>
+                  <option [ngValue]="'AB'">AB</option>
+                  <option  [ngValue]="'O'">O</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+          
+            <div class="form-group mb-2 col-md-6">
+              <label for="adresse">Adresse :</label>
+              <input class="form-control" type="text" id="adresse" [(ngModel)]="patient.adresse" name="adresse"  >
+            </div>
+            <div class="mb-2 col-md-6">
+              <div class="form-group">
+                <label for="profession">Profession :</label>
+                <input type="text" class="form-control" [(ngModel)]="patient.profession" name="profession" id="profession" >
+              </div>
+            </div>
+          </div>
+          
+         
+          
+          <div class="row">
+            <div class="mb-4 col-md-6">
+              <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" name="email" [(ngModel)]="patient.email" class="form-control" id="email" >
+              </div>
+            </div>
+    
+            <div class="mb-2 col-md-6">
+              <div class="form-group">
+                <label for="numero">Numero :</label>
+                <input type="numero" class="form-control" id="numero" name="numero" [(ngModel)]="patient.numero" >
+              </div>
+            </div>
+            <div class="mb-2 col">
+              <div class="form-group">
+                <label for="sexe" class="me-2">Sexe :</label>
+                
+                  <input class="form-check-input me-2" type="radio" name="sexe" [(ngModel)]="patient.sexe"  id="homme" value="H"  required>
+                  <label class="form-check-label me-4" for="homme">Homme</label>
+               
+                
+                  <input class="form-check-input me-2" type="radio" name="sexe" [(ngModel)]="patient.sexe" id="femme" value="F"  required>
+                  <label class="form-check-label" for="femme">Femme</label>
+              
+              </div>
+            </div>
+  
+            
+      </div>
+    <div class=" mt-4 text-center ">
+   
+    <button class="btn btn-danger me-4 " type="button"   aria-label="Close" (click)="modalRef.hide()">Fermer</button>
+    <button class="btn btn-primary   " type="button" (click)="updatePatient()">Modifier</button>
+    </div>
+    
+      </form>
+    
+    </div>
+     
+     
+  </ng-template>
+  
+
+
+
+  <!-- <ng-template #supprimer>
+   
+        <h4 class="modal-title text-center">Voulez vous vraiment supprimer </h4>
+        
+      
+      <div class="modal-body">
+        <div class=" mt-4 text-center">
+          <button class="btn btn-primary me-4" type="button" (click)="deletePatient(patient.id)" >OUI</button>
+          <button class="btn btn-danger" type="button"   aria-label="Close" (click)="modalRef.hide()">NON</button>
+          </div>
+      
+    </div>
+     
+  </ng-template>
+   -->
+  
+  <router-outlet></router-outlet>
+
+  
