@@ -32,10 +32,9 @@ export class ProfileComponent {
 
 
   ngOnInit(): void {
-  
      this.getPatientList();
-    console.log(this.currentPatient.prenom)
-   
+    //localStorage.getItem(key)
+
   }
 
   // getPatient(id: string): void {
@@ -60,7 +59,7 @@ export class ProfileComponent {
       error => {
         console.log(error);
       });
-    
+
   }
 
 

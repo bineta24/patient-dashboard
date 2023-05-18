@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 
 
 
+
+
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
@@ -44,8 +46,6 @@ export class PatientListComponent {
     numero: ''
   };
 
-
-
   patients :any;
 
 
@@ -57,13 +57,7 @@ constructor(public modalService: BsModalService, private patientService: Patient
 
 ngOnInit() {
 this.getPatientList();
-
-this.getPatient(this.route.snapshot.params['id']);
-
 }
-
-
-
 
 
 
@@ -71,7 +65,7 @@ openModal(template: TemplateRef<any>,id: any) {
   const user = {
       id: 10
     };
-    this.getPatient(id),
+    this.getPatient(id)
   this.modalRef = this.modalService.show(template, {
 
   });
@@ -89,13 +83,12 @@ openDeleteModal(template: TemplateRef<any>,id: any) {
 
 
 openAddModal(template: TemplateRef<any>) {
-  const user = {
-      id: 10
-    };
 
   this.modalRef = this.modalService.show(template, {
 
   });
+
+
 }
 
 getPatientList(){
@@ -118,13 +111,12 @@ getPatientList(){
 
 addPatient() {
 
-
   this.patientService.addPatient(this.patient).subscribe(
     (response) => {
 
      this.alertWithSuccess()
       console.log(response);
-      //window.location.reload();
+     // window.location.reload();
 
     } ,
 
@@ -181,7 +173,10 @@ onTableSizeChange(event: any): void {
 
 
   alertWithSuccess(){
-    Swal.fire('Mercii...', 'Votre patient a été crée avec succés!', 'success')
+    Swal.fire('Mercii...', 'Votre patient a été crée avec succés!', 'success', )
+     this.modalRef.hide()
+     //window.location.reload();
+    this.ngOnInit();
 
   }
 
@@ -189,16 +184,17 @@ onTableSizeChange(event: any): void {
 
 
 
-confirmBox(): void {
 
+confirmBox(): void {
 
   Swal.fire({
     title: 'Etes-vous sûre de vouloir supprimer?',
     text: 'Vous ne pourrez pas récupérer ce patient !!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'oui, supprimez-le!',
-    cancelButtonText: 'Non, garder le'
+
+    cancelButtonText: 'Non, garder le',
+    confirmButtonText: 'oui, supprimez-le!'
   }).then((result) => {
     if (result.value) {
       Swal.fire(
@@ -206,7 +202,8 @@ confirmBox(): void {
         'Votre patient a été supprimé avec succés.',
         'success'
       )
-      window.location.reload();
+      this.ngOnInit();
+
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal.fire(
         'Supprimé',
@@ -224,9 +221,8 @@ confirmBox(): void {
           .subscribe(
             response => {
               this.confirmBox();
-              this.router.navigate(['/patients']);
-              console.log(response);
 
+              console.log(response);
             },
             error => {
               console.log(error);
