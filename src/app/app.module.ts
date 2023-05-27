@@ -13,7 +13,22 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { FilterPipe } from './filter.pipe';
-// import { NgSearchPipe } from 'ng-search-pipe';
+import { RendezVousComponent } from './rendez-vous/rendez-vous.component';
+import {RendezVousService} from "./services/rendez-vous.service";
+import {DatePipe} from "@angular/common";
+import {CarouselModule} from "ngx-owl-carousel-o";
+
+import {NgbCarouselConfig, NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { TestComponent } from './test/test.component';
+import { NgxCarouselModule } from 'ngx-light-carousel';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
 
 
 
@@ -23,7 +38,9 @@ import { FilterPipe } from './filter.pipe';
     ProfileComponent,
     PatientListComponent,
     EditPatientComponent,
-    FilterPipe
+    FilterPipe,
+    RendezVousComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +50,15 @@ import { FilterPipe } from './filter.pipe';
     AppRoutingModule,
     NgxPaginationModule,
     ModalModule.forRoot(),
-    // Ng2SearchPipeModule
+   
+    NgbModule,
+    BsDatepickerModule.forRoot()
+   
+    
 
-    // NgSearchPipe
+
+
+
 
 
 
@@ -43,7 +66,7 @@ import { FilterPipe } from './filter.pipe';
 
 
   ],
-  providers: [HttpErrorHandler, MessageService,],
+  providers: [HttpErrorHandler, MessageService,DatePipe,NgbCarouselConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

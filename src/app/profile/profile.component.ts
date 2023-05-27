@@ -33,9 +33,26 @@ export class ProfileComponent {
 
   ngOnInit(): void {
      this.getPatientList();
-    //localStorage.getItem(key)
 
+
+
+    this.route.queryParams.subscribe(params => {
+
+
+      const objectId = params['id'];
+
+
+      const itemList = this.getPatientList();
+      // @ts-ignore
+      this.currentPatient = itemList.find(item => item.id === objectId);
+    });
   }
+
+
+
+
+
+
 
   // getPatient(id: string): void {
   //   this.patientService.get(id)
@@ -54,6 +71,7 @@ export class ProfileComponent {
     this.patientService.getPatientList().subscribe(
       data => {
         this.patients = data;
+
         console.log(data);
       },
       error => {
@@ -61,6 +79,11 @@ export class ProfileComponent {
       });
 
   }
+
+
+
+
+
 
 
 }

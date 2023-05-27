@@ -1,0 +1,38 @@
+.btn{
+
+  background-color: #f7f7f7;
+
+
+}
+
+.days-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.day-container {
+  margin-bottom: 20px;
+}
+
+.slot-item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slot-item li {
+  margin-bottom: 5px;
+}
+.slot-green {
+  background-color: green;
+  color: white;
+  /* Ajoutez d'autres styles au besoin */
+}.slot-red {
+  background-color: red;
+  color: white;
+  /* Ajoutez d'autres styles au besoin */
+}
+
+
+

@@ -57,6 +57,7 @@ constructor(public modalService: BsModalService, private patientService: Patient
 
 ngOnInit() {
 this.getPatientList();
+
 }
 
 
@@ -71,15 +72,7 @@ openModal(template: TemplateRef<any>,id: any) {
   });
 }
 
-openDeleteModal(template: TemplateRef<any>,id: any) {
-  const user = {
-      id: 10
-    };
-    this.getPatient(id),
-  this.modalRef = this.modalService.show(template, {
 
-  });
-}
 
 
 openAddModal(template: TemplateRef<any>) {
